@@ -3,22 +3,24 @@
 import { useState, useEffect } from "react";
 import Slider from "./Slider";
 
-
 const CHECKPOINTS = [10, 25, 40, 60];
+const INITIAL_MINUTES = 25;
 
 const Timer: React.FC = () => {
-  const [selectedMinutes, setSelectedMinutes] = useState(25);
-  const [secondsLeft, setSecondsLeft] = useState(selectedMinutes * 60);
-  const [isRunning, setIsRunning] = useState(false);
+  const [selectedMinutes, setSelectedMinutes] = useState<number>(INITIAL_MINUTES);
+  const [secondsLeft, setSecondsLeft] = useState<number>(INITIAL_MINUTES * 60);
+  const [isRunning, setIsRunning] = useState<boolean>(false);
 
-
+  // Reset seconds when selectedMinutes changes
   useEffect(() => {
     setSecondsLeft(selectedMinutes * 60);
     setIsRunning(false);
   }, [selectedMinutes]);
 
+  // Timer countdown logic
   useEffect(() => {
     if (!isRunning) return;
+
     const interval = setInterval(() => {
       setSecondsLeft((prev) => {
         if (prev <= 1) {
@@ -29,9 +31,11 @@ const Timer: React.FC = () => {
         return prev - 1;
       });
     }, 1000);
+
     return () => clearInterval(interval);
   }, [isRunning]);
 
+  // Format seconds to MM:SS
   const formatTime = (secs: number) => {
     const minutes = Math.floor(secs / 60);
     const seconds = secs % 60;
@@ -39,11 +43,11 @@ const Timer: React.FC = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto p-6 text-center font-minecraft text-amber-950 relative mt-50" >
-      {/* Timer */}
+    <div className="max-w-md mx-auto p-6 text-center font-minecraft text-amber-950 relative mt-50">
+      {/* Timer Display */}
       <h1 className="text-6xl font-bold mb-8">{formatTime(secondsLeft)}</h1>
 
-      {/* Slider with proper props */}
+      {/* Slider Control */}
       <Slider
         min={5}
         max={60}
@@ -53,7 +57,7 @@ const Timer: React.FC = () => {
         onChange={(val) => setSelectedMinutes(val)}
       />
 
-      {/* Control Buttons */}
+      {/* Start/Pause and Reset Buttons */}
       <div className="flex gap-5 mt-6">
         <button
           onClick={() => setIsRunning(!isRunning)}
@@ -72,7 +76,6 @@ const Timer: React.FC = () => {
           Reset
         </button>
       </div>
-
     </div>
   );
 };
