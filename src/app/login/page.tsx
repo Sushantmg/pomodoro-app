@@ -49,10 +49,12 @@ const LoginPage = () => {
     }
   }, [isLoggedIn, router]);
 
-  const onSubmit: SubmitHandler<FormValues> = (data) => {
-    login();
-    router.push("/");
-  };
+const onSubmit: SubmitHandler<FormValues> = (data) => {
+  console.log("Login with", data);
+  login();
+  router.push("/");
+};
+
 
   if (isLoggedIn) return null;
 
