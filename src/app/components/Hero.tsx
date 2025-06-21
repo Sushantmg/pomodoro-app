@@ -2,7 +2,6 @@
 
 import React from "react";
 
-
 export default function Hero() {
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-b from-green-50 via-green-100 to-green-200 text-gray-800 font-sans">
@@ -19,7 +18,7 @@ export default function Hero() {
         <section className="max-w-3xl mx-auto mt-12 space-y-6 text-left bg-green-100/70 p-6 rounded-xl shadow-sm">
           <h2 className="text-2xl font-semibold text-green-900">What is Pomodoro Timer?</h2>
           <p className="text-green-800">
-            Our Pomodoro Timer leverages a science-backed time management method that divides work into intervals—typically 25 minutes—called "Pomodoros," followed by short breaks. It enhances concentration, reduces mental fatigue, and helps maintain peak productivity throughout your day.
+            Our Pomodoro Timer leverages a science-backed time management method that divides work into intervals—typically 25 minutes—called &quot;Pomodoros,&quot; followed by short breaks. It enhances concentration, reduces mental fatigue, and helps maintain peak productivity throughout your day.
           </p>
 
           <h2 className="text-2xl font-semibold text-green-900">How It Works</h2>
@@ -50,7 +49,7 @@ export default function Hero() {
             <li>Export productivity history in CSV format</li>
             <li>Save unlimited task templates for quick reuse</li>
             <li>Integrate with Todoist for seamless task syncing</li>
-            <li>Webhook support for automation tools like Zapier & IFTTT</li>
+            <li>Webhook support for automation tools like Zapier &amp; IFTTT</li>
             <li>100% ad-free and distraction-free environment</li>
           </ul>
         </section>
@@ -63,8 +62,7 @@ export default function Hero() {
             <li>For Linux: <a className="text-green-700 underline" href="#">pomofocus-1.1.0-lin-amd64.zip</a></li>
           </ul>
           <p className="text-sm text-green-600 mt-2">
-        Windows may show a security warning—click “Details” then “Run anyway” to proceed.
-
+            Windows may show a security warning—click &quot;Details&quot; then &quot;Run anyway&quot; to proceed.
           </p>
         </section>
       </main>
