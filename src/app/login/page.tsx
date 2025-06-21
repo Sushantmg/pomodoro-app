@@ -36,7 +36,9 @@ const LoginPage = () => {
   // Cycle language every 3 seconds
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentLangIndex((prevIndex) => (prevIndex + 1) % welcomeMessages.length);
+      setCurrentLangIndex(
+        (prevIndex) => (prevIndex + 1) % welcomeMessages.length
+      );
     }, 3000);
     return () => clearInterval(interval);
   }, []);
@@ -91,7 +93,9 @@ const LoginPage = () => {
               {...register("username", { required: "Username is required" })}
             />
             {errors.username && (
-              <p className="text-red-500 mt-1 text-sm">{errors.username.message}</p>
+              <p className="text-red-500 mt-1 text-sm">
+                {errors.username.message}
+              </p>
             )}
           </div>
 
@@ -108,7 +112,9 @@ const LoginPage = () => {
               {...register("password", { required: "Password is required" })}
             />
             {errors.password && (
-              <p className="text-red-500 mt-1 text-sm">{errors.password.message}</p>
+              <p className="text-red-500 mt-1 text-sm">
+                {errors.password.message}
+              </p>
             )}
           </div>
 
@@ -121,7 +127,7 @@ const LoginPage = () => {
         </form>
 
         <p className="mt-6 text-center text-sm text-amber-700 opacity-80">
-          &copy; 2025 Ruten
+          &copy; 2025 DHYAN
         </p>
       </div>
     </div>
