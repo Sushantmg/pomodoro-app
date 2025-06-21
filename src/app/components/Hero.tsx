@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { FaFacebookF, FaTwitter } from "react-icons/fa";
+
 
 export default function Hero() {
   return (
@@ -63,7 +63,8 @@ export default function Hero() {
             <li>For Linux: <a className="text-green-700 underline" href="#">pomofocus-1.1.0-lin-amd64.zip</a></li>
           </ul>
           <p className="text-sm text-green-600 mt-2">
-            Note: On Windows, a security warning might appear. Click "More Info" then "Run Anyway" to proceed safely.
+        Windows may show a security warning—click “Details” then “Run anyway” to proceed.
+
           </p>
         </section>
       </main>
