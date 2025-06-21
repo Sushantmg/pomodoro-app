@@ -2,32 +2,52 @@
 
 import React, { useState, useEffect } from "react";
 
+// Define task type
 interface Task {
   id: number;
   text: string;
   completed: boolean;
 }
 
+// Simple cookie helpers
+const setCookie = (name: string, value: string, days: number) => {
+  const expires = new Date(Date.now() + days * 864e5).toUTCString();
+  document.cookie = `${name}=${encodeURIComponent(value)}; expires=${expires}; path=/`;
+};
+
+const getCookie = (name: string) => {
+  return document.cookie
+    .split("; ")
+    .find((row) => row.startsWith(name + "="))
+    ?.split("=")[1];
+};
+
 const TaskManager: React.FC = () => {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [input, setInput] = useState("");
 
-  // Load tasks from localStorage
+  // Load tasks from cookie
   useEffect(() => {
-    const saved = localStorage.getItem("pomodoro-tasks");
-    if (saved) setTasks(JSON.parse(saved));
+    const saved = getCookie("pomodoroTasks");
+    if (saved) {
+      try {
+        setTasks(JSON.parse(decodeURIComponent(saved)));
+      } catch {
+        setTasks([]);
+      }
+    }
   }, []);
 
-  // Save tasks to localStorage on every change
+  // Save tasks to cookie whenever tasks change
   useEffect(() => {
-    localStorage.setItem("pomodoro-tasks", JSON.stringify(tasks));
+    setCookie("pomodoroTasks", JSON.stringify(tasks), 7); // expires in 7 days
   }, [tasks]);
 
   const addTask = () => {
     if (!input.trim()) return;
     const newTask: Task = {
       id: Date.now(),
-      text: input,
+      text: input.trim(),
       completed: false,
     };
     setTasks((prev) => [...prev, newTask]);
@@ -80,11 +100,7 @@ const TaskManager: React.FC = () => {
                 onChange={() => toggleTask(task.id)}
                 className="accent-amber-500 w-4 h-4"
               />
-              <span
-                className={`${
-                  task.completed ? "line-through text-gray-300" : ""
-                }`}
-              >
+              <span className={task.completed ? "line-through text-gray-300" : ""}>
                 {task.text}
               </span>
             </div>
