@@ -70,12 +70,3 @@ Unlike `localStorage`, tasks are stored and loaded from **cookies**, which:
 
 ---
 
-## 🧪 How to Run Locally
-
-1. **Clone the repo:**
-
-   ```bash
-   git clone https://github.com/your-username/dhyan-pomodoro.git
-   cd dhyan-pomodoro
-npm install
-
