@@ -23,7 +23,7 @@ export default function Footer() {
       </div>
       <div className="text-center mt-6 text-xs text-green-200">
         Made with <span className="text-red-400">&lt;3</span> BY SUSHAN TAMANG<br />
-        &copy; Pomofocus 2025. All Rights Reserved.
+        &copy; DHYAN 2025. All Rights Reserved.
       </div>
     </footer>
   );
